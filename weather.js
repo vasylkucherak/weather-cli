@@ -1,18 +1,19 @@
-#!/usr/bin/env node //? вказує, що викликати цей файл за допомогою node
+#!/usr/bin/env node
+import { getArgs } from './helpers/args.js';
+import { printHelp } from './services/log.service.js';
 
 const initCLI = () => {
-    const args = getArgs(process.argv);
-    console.log(args);
-    if (args.h) {
-        //? виклк help
-    }
-    if (args.s) {
-        //? зберегти місто
-    }
-    if (args.t) {
-        //? зберегти токен
-    }
-    // вивести погоду
-}
+	const args = getArgs(process.argv)
+	if (args.h) {
+		printHelp();
+	}
+	if (args.s) {
+		//? зберегти місто
+	}
+	if (args.t) {
+		//? зберегти токен
+	}
+	//? вивести погоду
+};
 
 initCLI();
