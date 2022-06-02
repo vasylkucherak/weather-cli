@@ -1,5 +1,5 @@
-import chalk from 'chalk';
-import dedent from 'dedent-js';
+import chalk from 'chalk'; //? для кольорових повідомлень в консолі
+import dedent from 'dedent-js'; //? щоб не було відступу зліва у консольних повідомленнях
 
 const printError = (error) => {
 	console.log(chalk.bgRed(' ERROR ') + ' ' + error);
@@ -20,4 +20,16 @@ const printHelp = () => {
 	);
 };
 
-export { printError, printSuccess, printHelp };
+const printWeather = (res, icon) => {
+	console.log(
+		dedent`${chalk.bgBlue(' Weather ')}
+		${chalk.bgGray(' Місто ')} ${res.name}
+		${chalk.bgGray(' Погода ')} ${res.weather[0].description} ${icon}
+		${chalk.bgGray(' Температура ')} ${res.main.temp}℃  (відчувається як ${res.main.feels_like}℃ )
+		${chalk.bgGray(' Вологість ')} ${res.main.humidity}%
+		${chalk.bgGray(' Швидкість вітру ')} ${res.wind.speed}м/с
+		`
+	);
+};
+
+export { printError, printSuccess, printHelp, printWeather };
